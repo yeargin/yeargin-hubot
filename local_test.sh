@@ -1,3 +1,3 @@
 source .env
 
-./bin/hubot
+./bin/hubot --alias "!"
