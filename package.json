@@ -23,9 +23,11 @@
     "hubot-slack":              ">= 2.1.0",
     "hubot-fitbit-leaders":     "1.0.3",
     "hubot-foursquare-locator": "1.1.4",
+    "hubot-bcycle-finder":      "1.0.0",
+    "hubot-untappd-friends":    "1.0.2",
     "hubot-mailchimp":          ">= 1.2.0",
     "hubot-help":               ">= 0.1.0",
-    "hubot-redmine":            "git://github.com/stephenyeargin/hubot-redmine.git#bug/10-fix-version"
+    "hubot-redmine":            "git://github.com/robhurring/hubot-redmine.git"
   },
 
   "engines": {
