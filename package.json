@@ -10,10 +10,10 @@
   },
   "dependencies": {
     "hubot": ">= 2.6.0 < 3.0.0",
-    "hubot-bcycle-finder": "1.0.0",
+    "hubot-bcycle-finder": "1.0.1",
     "hubot-diagnostics": "0.0.1",
     "hubot-fitbit-leaders": "1.0.3",
-    "hubot-foursquare-locator": "1.1.4",
+    "hubot-foursquare-locator": "1.1.6",
     "hubot-help": "^0.1.1",
     "hubot-heroku-keepalive": "0.0.4",
     "hubot-mailchimp": ">= 1.2.0",
@@ -21,7 +21,7 @@
     "hubot-redmine": "git://github.com/robhurring/hubot-redmine.git",
     "hubot-scripts": ">= 2.5.0 < 3.0.0",
     "hubot-slack": "3.2.1",
-    "hubot-untappd-friends": "1.0.2"
+    "hubot-untappd-friends": "1.0.3"
   },
   "engines": {
     "node": ">= 0.8.x",
