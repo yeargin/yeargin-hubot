@@ -10,5 +10,6 @@
   "hubot-help",
   "hubot-redis-brain",
   "hubot-diagnostics",
-  "hubot-philipshue"
+  "hubot-philipshue",
+  "hubot-hockey"
 ]
