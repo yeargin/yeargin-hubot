@@ -19,6 +19,7 @@
     "hubot-hockey": "^1.0.0",
     "hubot-mailchimp": ">= 1.2.0",
     "hubot-philipshue": "git://github.com/stephenyeargin/hubot-philipshue",
+    "hubot-nextbus": "^0.1.0",
     "hubot-redis-brain": "0.0.2",
     "hubot-redmine": "git://github.com/robhurring/hubot-redmine.git",
     "hubot-scripts": ">= 2.5.0 < 3.0.0",

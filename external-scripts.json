@@ -1,15 +1,16 @@
 [
+  "hubot-bcycle-finder",
+  "hubot-diagnostics",
   "hubot-fitbit-leaders",
   "hubot-foursquare-locator",
-  "hubot-mailchimp",
-  "hubot-redmine",
   "hubot-help",
-  "hubot-bcycle-finder",
-  "hubot-untappd-friends",
+  "hubot-help",
   "hubot-heroku-keepalive",
-  "hubot-help",
-  "hubot-redis-brain",
-  "hubot-diagnostics",
+  "hubot-hockey",
+  "hubot-mailchimp",
+  "hubot-nextbus",
   "hubot-philipshue",
-  "hubot-hockey"
+  "hubot-redis-brain",
+  "hubot-redmine",
+  "hubot-untappd-friends"
 ]
