@@ -12,7 +12,7 @@
     "hubot": ">= 2.6.0 < 3.0.0",
     "hubot-bcycle-finder": "1.0.1",
     "hubot-diagnostics": "0.0.1",
-    "hubot-fitbit-leaders": "1.0.3",
+    "hubot-fitbit-leaders": "1.1.0",
     "hubot-foursquare-locator": "1.1.6",
     "hubot-help": "^0.1.1",
     "hubot-heroku-keepalive": "0.0.4",
