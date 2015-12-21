@@ -3,6 +3,7 @@
   "hubot-diagnostics",
   "hubot-fitbit-leaders",
   "hubot-foursquare-locator",
+  "hubot-grafana",
   "hubot-help",
   "hubot-help",
   "hubot-heroku-keepalive",
@@ -12,5 +13,6 @@
   "hubot-philipshue",
   "hubot-redis-brain",
   "hubot-redmine",
+  "hubot-uber",
   "hubot-untappd-friends"
 ]
