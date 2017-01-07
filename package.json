@@ -20,7 +20,7 @@
     "hubot-hockey": "^1.0.0",
     "hubot-hue-meeting": "^1.0.5",
     "hubot-mailchimp": ">= 1.2.0",
-    "hubot-nashville-news": "^1.0.0",
+    "hubot-nashville-news": "^1.0.1",
     "hubot-nextbus": "^0.1.1",
     "hubot-philipshue": "0.0.9",
     "hubot-redis-brain": "0.0.2",
