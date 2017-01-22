@@ -15,6 +15,7 @@
   "hubot-philipshue",
   "hubot-redis-brain",
   "hubot-redmine",
+  "hubot-shipit",
   "hubot-uber",
   "hubot-untappd-friends"
 ]
