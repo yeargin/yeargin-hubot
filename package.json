@@ -19,6 +19,7 @@
     "hubot-heroku-keepalive": "0.0.4",
     "hubot-hockey": "^1.2.1",
     "hubot-hue-meeting": "^1.0.5",
+    "hubot-lyft": "^1.0.0",
     "hubot-mailchimp": "^1.2.1",
     "hubot-nashville-news": "^1.0.2",
     "hubot-nextbus": "^0.1.2",
