@@ -18,7 +18,7 @@
 #   jt2k
 
 
-api_url = 'http://jasontan.org/pollen.php'
+api_url = 'https://jasontan.org/api/pollen'
 
 module.exports = (robot) ->
 
