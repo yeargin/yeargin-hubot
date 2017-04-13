@@ -19,6 +19,7 @@
     "hubot-hockey": "^1.2.1",
     "hubot-homepage": "^1.0.0",
     "hubot-hue-meeting": "^1.0.5",
+    "hubot-keybase": "^0.1.0",
     "hubot-lyft": "^1.0.1",
     "hubot-mailchimp": "^1.2.1",
     "hubot-nashville-news": "^1.0.2",
