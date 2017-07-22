@@ -34,7 +34,6 @@
     "hubot-untappd-friends": "^1.0.8"
   },
   "engines": {
-    "node": ">= 0.8.x",
-    "npm": ">= 1.1.x"
+    "node": "6.10.x"
   }
 }
