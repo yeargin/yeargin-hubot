@@ -9,8 +9,8 @@
   "hubot-hockey",
   "hubot-homepage",
   "hubot-hue-meeting",
-  "hubot-lyft",
   "hubot-keybase",
+  "hubot-lyft",
   "hubot-mailchimp",
   "hubot-nashville-news",
   "hubot-nashville-pollen",
@@ -20,5 +20,6 @@
   "hubot-redmine",
   "hubot-shipit",
   "hubot-uber",
-  "hubot-untappd-friends"
+  "hubot-untappd-friends",
+  "hubot-wunderground"
 ]

@@ -1,6 +1,6 @@
 {
   "name": "yeargin-hubot",
-  "version": "2.11.0",
+  "version": "3.0.1",
   "private": true,
   "author": "Yeargin Haus Hubot",
   "description": "Our hubot.",
@@ -9,9 +9,9 @@
     "url": "https://github.com/yeargin/yeargin-hubot.git"
   },
   "dependencies": {
-    "hubot": "^2.19.0",
+    "hubot": "^3.0.0",
     "hubot-bcycle-finder": "1.0.1",
-    "hubot-diagnostics": "0.0.1",
+    "hubot-diagnostics": "0.0.2",
     "hubot-fitbit-leaders": "^2.0.3",
     "hubot-foursquare-locator": "^1.2.0",
     "hubot-grafana": "^1.5.0",
@@ -26,12 +26,13 @@
     "hubot-nashville-pollen": "^1.1.0",
     "hubot-nextbus": "^0.1.2",
     "hubot-philipshue": "0.0.9",
-    "hubot-redis-brain": "0.0.3",
+    "hubot-redis-brain": "0.0.4",
     "hubot-redmine": "0.1.5",
     "hubot-shipit": "^0.2.0",
     "hubot-slack": "^4.3.4",
     "hubot-uber": "^2.0.0",
-    "hubot-untappd-friends": "^1.0.8"
+    "hubot-untappd-friends": "^1.0.8",
+    "hubot-wunderground": "^1.0.0"
   },
   "engines": {
     "node": "6.10.x"
