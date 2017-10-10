@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "hubot": "^3.0.0",
-    "hubot-bcycle-finder": "1.0.1",
+    "hubot-bcycle-finder": "^2.0",
     "hubot-diagnostics": "0.0.2",
     "hubot-fitbit-leaders": "^2.0.3",
     "hubot-foursquare-locator": "^1.2.0",
