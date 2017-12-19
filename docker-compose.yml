@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  redis:
+    container_name: yeargin-redis
+    image: redis:alpine
+  hubot:
+    container_name: yeargin-hubot
+    build: .
+    env_file:
+      - .env
+    environment:
+      - REDIS_URL=redis://yeargin-redis:16379
+    depends_on:
+      - redis
