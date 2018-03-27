@@ -1,3 +1,3 @@
-source .env
+#!/usr/bin/env sh
 
-./bin/hubot --alias "!"
+npm start
