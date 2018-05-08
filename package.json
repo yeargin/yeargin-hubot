@@ -41,6 +41,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "hubot-dotenv -n hubot --alias \"!\""
+    "start": "hubot-dotenv -n hubot --alias \"!\"",
+    "test": "hubot-dotenv --config-check"
   }
 }
