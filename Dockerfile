@@ -1,20 +1,25 @@
-FROM node:alpine
-
+FROM node:8
 MAINTAINER Stephen Yeargin <stephen@yearg.in>
 
-# Install global NPM packages
-RUN npm install --global coffeescript yo generator-hubot
+# Install required packages
+RUN apt-get update && \
+   apt-get install -y libfuzzy-dev libicu-dev redis-server && \
+   rm -rf /var/lib/apt/lists/*
 
-# Create hubot user
-RUN adduser -h /hubot -s /bin/bash -S hubot
-USER  hubot
-WORKDIR /hubot
+# Move files into place
+COPY . /opt/hubot
+WORKDIR /opt/hubot
 
-# Install hubot
-RUN yo hubot --owner="" --name="hubot" --description="" --defaults
-COPY package.json package.json
+# Create a hubot user
+RUN useradd -ms /bin/bash hubot
+RUN chown -fR hubot /opt/hubot
+USER hubot
+
+# Install dependencies
 RUN npm install
-COPY external-scripts.json /hubot/
 
-# And go
-ENTRYPOINT ["/bin/sh", "-c", "bin/hubot --adapter slack --alias '!'"]
+# Default adapter and name
+ENV HUBOT_ADAPTER slack
+ENV HUBOT_NAME hubot
+
+ENTRYPOINT ["/bin/sh", "-c", "bin/hubot --name $HUBOT_NAME --adapter $HUBOT_ADAPTER --alias '!'"]

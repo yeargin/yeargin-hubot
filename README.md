@@ -8,9 +8,13 @@ This version is designed to be deployed on [Heroku][heroku]. This README was gen
 
 ### Testing Hubot Locally
 
+Begin by ensuring you have the `.env` file available.
+
+    % cp .env-dist .env
+
 You can test your hubot by running the following.
 
-    % bin/hubot
+    % npm run localtest
 
 You'll see some start up output about where your scripts come from and a
 prompt.

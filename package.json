@@ -37,12 +37,10 @@
     "hubot-untappd-friends": "^1.3.3",
     "hubot-wunderground": "^1.0.3"
   },
-  "engines": {
-    "node": "6.10.x"
-  },
   "devDependencies": {},
   "scripts": {
-    "start": "hubot-dotenv -n hubot --alias \"!\"",
+    "start": "bin/hubot --adapter slack --alias '!'",
+    "localtest": "hubot-dotenv --alias \"!\"",
     "test": "hubot-dotenv --config-check"
   }
 }
