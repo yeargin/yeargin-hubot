@@ -32,7 +32,7 @@
     "hubot-redis-brain": "^1.0.0",
     "hubot-redmine": "^0.2.1",
     "hubot-shipit": "^0.2.1",
-    "hubot-slack": "^4.5.4",
+    "hubot-slack": "^4.5.5",
     "hubot-uber": "^2.0.1",
     "hubot-untappd-friends": "^1.4.1",
     "hubot-wunderground": "^1.0.4"
