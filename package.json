@@ -34,7 +34,7 @@
     "hubot-shipit": "^0.2.1",
     "hubot-slack": "^4.6.0",
     "hubot-uber": "^2.0.1",
-    "hubot-untappd-friends": "^1.4.1",
+    "hubot-untappd-friends": "^1.4.2",
     "hubot-wunderground": "^1.0.4"
   },
   "devDependencies": {},
