@@ -22,7 +22,6 @@
     "hubot-home-assistant": "^2.0.0",
     "hubot-homepage": "^1.0.4",
     "hubot-hue-meeting": "^1.1.4",
-    "hubot-keybase": "^1.0.0",
     "hubot-mailchimp": "^1.3.0",
     "hubot-nashville-news": "^1.0.8",
     "hubot-nextbus": "^0.1.7",
@@ -32,9 +31,7 @@
     "hubot-redmine": "^0.2.1",
     "hubot-shipit": "^0.2.1",
     "hubot-slack": "^4.7.1",
-    "hubot-uber": "^2.0.1",
-    "hubot-untappd-friends": "^1.4.3",
-    "hubot-wunderground": "^1.0.4"
+    "hubot-untappd-friends": "^1.4.3"
   },
   "devDependencies": {},
   "scripts": {

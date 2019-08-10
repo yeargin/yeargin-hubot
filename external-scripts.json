@@ -6,12 +6,10 @@
   "hubot-foursquare-locator",
   "hubot-grafana",
   "hubot-help",
-  "hubot-help",
   "hubot-hockey",
   "hubot-home-assistant",
   "hubot-homepage",
   "hubot-hue-meeting",
-  "hubot-keybase",
   "hubot-mailchimp",
   "hubot-nashville-news",
   "hubot-pollen",
@@ -20,7 +18,5 @@
   "hubot-redis-brain",
   "hubot-redmine",
   "hubot-shipit",
-  "hubot-uber",
-  "hubot-untappd-friends",
-  "hubot-wunderground"
+  "hubot-untappd-friends"
 ]
