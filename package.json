@@ -26,7 +26,7 @@
     "hubot-nashville-news": "^1.0.8",
     "hubot-nextbus": "^0.1.7",
     "hubot-philipshue": "^0.0.14",
-    "hubot-pollen": "^1.1.6",
+    "hubot-pollen": "^1.1.7",
     "hubot-redis-brain": "^1.0.0",
     "hubot-redmine": "^0.2.1",
     "hubot-shipit": "^0.2.1",
