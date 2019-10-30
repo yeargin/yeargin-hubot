@@ -31,7 +31,7 @@
     "hubot-redmine": "^0.2.1",
     "hubot-shipit": "^0.2.1",
     "hubot-slack": "^4.7.1",
-    "hubot-untappd-friends": "^1.4.3"
+    "hubot-untappd-friends": "^1.4.4"
   },
   "devDependencies": {},
   "scripts": {
