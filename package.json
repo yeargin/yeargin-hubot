@@ -28,7 +28,7 @@
     "hubot-philipshue": "^0.0.14",
     "hubot-pollen": "^1.1.9",
     "hubot-redis-brain": "^1.0.0",
-    "hubot-redmine": "^0.2.2",
+    "hubot-redmine": "robhurring/hubot-redmine#namespace-commands",
     "hubot-shipit": "^0.2.1",
     "hubot-slack": "^4.8.0",
     "hubot-untappd-friends": "^1.4.8"
