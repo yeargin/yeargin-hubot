@@ -13,3 +13,5 @@ services:
       - REDIS_URL=redis://yeargin-redis:16379
     depends_on:
       - redis
+    volumes:
+      - .:/opt/hubot
