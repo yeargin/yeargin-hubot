@@ -9,6 +9,7 @@
     "url": "https://github.com/yeargin/yeargin-hubot.git"
   },
   "dependencies": {
+    "@slack/web-api": "^5.11.0",
     "hubot": "^3.3.2",
     "hubot-bcycle-finder": "^2.1.7",
     "hubot-createsend": "^1.0.12",

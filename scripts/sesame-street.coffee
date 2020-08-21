@@ -21,13 +21,18 @@ module.exports = (robot) ->
         robot.logger.error err
         return
       for episode in episodes.items
-        premier_date = (new Date(episode.encored_on)).toLocaleDateString()
-        encore_date = (new Date(episode.premiered_on)).toLocaleDateString()
+        premier_date = (new Date(episode.premiered_on)).toLocaleDateString()
+        encore_date = (new Date(episode.encored_on)).toLocaleDateString()
         runtime = Math.round(episode.duration/60)
 
         switch robot.adapterName
           when 'slack'
-            msg.send {
+            { WebClient } = require '@slack/web-api'
+            slackWebClient = new WebClient(process.env.HUBOT_SLACK_TOKEN)
+            payload = {
+              "as_user": false,
+              "username": "Sesame Street",
+              "icon_url": "https://cdn.sesamestreet.org/sites/default/files/Icon_Muppet_BigBird_0.png",
               "blocks": [
                 {
                   "type": "header",
@@ -44,6 +49,10 @@ module.exports = (robot) ->
                 {
                   "type": "section",
                   "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Episode:* #{episode.nola_episode}"
+                    },
                     {
                       "type": "mrkdwn",
                       "text": "*Encore Date:* #{encore_date}"
@@ -65,8 +74,10 @@ module.exports = (robot) ->
                     "text": episode.description
                   }
                 }
-              ]
+              ],
+              "channel": msg.message.room
             }
+            slackWebClient.chat.postMessage(payload)
           else
             msg.send "#{encore_date}: #{episode.title}"
             msg.send "  #{episode.description} (#{runtime} minutes)"
