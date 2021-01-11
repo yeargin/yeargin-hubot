@@ -9,7 +9,7 @@
     "url": "https://github.com/yeargin/yeargin-hubot.git"
   },
   "dependencies": {
-    "@slack/web-api": "^5.14.0",
+    "@slack/web-api": "^5.15.0",
     "hubot": "^3.3.2",
     "hubot-bcycle-finder": "^2.1.7",
     "hubot-createsend": "^1.0.12",
@@ -29,7 +29,7 @@
     "hubot-philipshue": "^0.0.14",
     "hubot-pollen": "^1.1.11",
     "hubot-redis-brain": "^1.0.0",
-    "hubot-redmine": "robhurring/hubot-redmine#namespace-commands",
+    "hubot-redmine": "robhurring/hubot-redmine",
     "hubot-shipit": "^0.2.1",
     "hubot-slack": "^4.8.1",
     "hubot-untappd-friends": "^1.4.9"
