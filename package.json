@@ -13,6 +13,7 @@
     "hubot": "^3.3.2",
     "hubot-bcycle-finder": "^2.1.7",
     "hubot-createsend": "^1.0.12",
+    "hubot-dad-jokes": "^1.0.0",
     "hubot-diagnostics": "^1.0.0",
     "hubot-dotenv": "^1.0.0",
     "hubot-fitbit-leaders": "^2.2.5",
