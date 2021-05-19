@@ -30,7 +30,7 @@
     "hubot-nextbus": "^1.0.0",
     "hubot-philipshue": "^1.0.1",
     "hubot-pollen": "^1.1.12",
-    "hubot-redis-brain": "^1.0.0",
+    "hubot-redis-brain": "hubotio/hubot-redis-brain",
     "hubot-redmine": "robhurring/hubot-redmine",
     "hubot-shipit": "^0.2.1",
     "hubot-slack": "^4.9.0",
