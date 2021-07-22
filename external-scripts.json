@@ -1,5 +1,6 @@
 [
   "hubot-bcycle-finder",
+  "hubot-brightwheel",
   "hubot-createsend",
   "hubot-dad-jokes",
   "hubot-diagnostics",
@@ -14,9 +15,9 @@
   "hubot-mailchimp",
   "hubot-nashville-electric",
   "hubot-nashville-news",
-  "hubot-pollen",
   "hubot-nextbus",
   "hubot-philipshue",
+  "hubot-pollen",
   "hubot-redis-brain",
   "hubot-redmine",
   "hubot-shipit",
