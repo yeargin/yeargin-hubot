@@ -11,17 +11,6 @@ node {
         checkout scm
     }
 
-    stage('Build image') {
-        app = docker.build("yeargin/yeargin-hubot")
-    }
-
-    stage('Push image') {
-        docker.withRegistry('https://registry.hub.docker.com', '5251fb33-a45a-4251-8271-b849fad23e03') {
-            app.push("build-${env.BUILD_NUMBER}")
-            app.push("latest")
-        }
-    }
-
     withCredentials([sshUserPrivateKey(credentialsId: '2b399dca-949a-46ca-945e-707e04291394', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
         remote.user = userName
         remote.identityFile = identity

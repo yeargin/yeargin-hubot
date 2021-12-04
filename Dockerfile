@@ -24,4 +24,4 @@ ENV HUBOT_NAME hubot
 
 EXPOSE 8080
 
-ENTRYPOINT ["/bin/sh", "-c", "bin/hubot --name $HUBOT_NAME --adapter $HUBOT_ADAPTER --alias '!'"]
+ENTRYPOINT ["/bin/sh", "-c", "npm run start"]
