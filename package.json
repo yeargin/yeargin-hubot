@@ -30,7 +30,7 @@
     "hubot-redis-brain": "hubotio/hubot-redis-brain",
     "hubot-redmine": "^1.0.2",
     "hubot-shipit": "^0.2.1",
-    "hubot-slack": "^4.9.0"
+    "hubot-slack": "^4.10.0"
   },
   "scripts": {
     "start": "bin/hubot --adapter slack --alias '!'",
