@@ -1,9 +1,0 @@
-os: linux
-dist: xenial
-language: node_js
-
-node_js:
-  - node
-
-notifications:
-  email: false
