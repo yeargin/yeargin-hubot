@@ -1,16 +1,27 @@
 # Description
-#   Sesame Street on PBS Kids
+#   PBS Kids Programming
+#
+# Configuration
+#   HUBOT_PBS_SHOWS - Comma separated list of show IDs.
 #
 # Commands
-#   hubot sesame - Show available episodes on PBS Kids
+#   hubot pbs - Show configured shows available on the PBS Kids app
+#   hubot sesame - Show available Sesame Street episodes on PBS Kids app
 
 module.exports = (robot) ->
+  configured_shows = process.env.HUBOT_PBS_SHOWS or 'sesame-street,daniel-tigers-neighborhood'
   base_url = 'https://producerplayer.services.pbskids.org/show-list/'
 
-  # Get available episodes
+  robot.respond /(pbs|pbs kids)$/i, (msg) ->
+    displayShowData(configured_shows, msg)
+
+  # Shortcut to Sesame Street
   robot.respond /(?:sesame|sesame street|elmo)(?: episodes)?/i, (msg) ->
+    displayShowData('sesame-street', msg)
+
+  displayShowData = (shows, msg) ->
     robot.http(base_url).query(
-      shows: 'sesame-street',
+      shows: shows,
       available: 'public',
       sort: '-encored_on',
       type: 'episode'
@@ -31,8 +42,8 @@ module.exports = (robot) ->
             slackWebClient = new WebClient(process.env.HUBOT_SLACK_TOKEN)
             payload = {
               "as_user": false,
-              "username": "Sesame Street",
-              "icon_url": "https://cdn.sesamestreet.org/sites/default/files/Icon_Muppet_BigBird_0.png",
+              "username": "PBS Kids",
+              "icon_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/PBS_Kids_logo_%282022%29.svg/240px-PBS_Kids_logo_%282022%29.svg.png",
               "blocks": [
                 {
                   "type": "header",
