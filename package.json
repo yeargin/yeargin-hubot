@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@slack/web-api": "^6.8.1",
+    "coffee-script": "~1.6",
     "hubot": "^4.1.0",
     "hubot-bcycle-finder": "^2.2.7",
     "hubot-createsend": "^1.0.20",
