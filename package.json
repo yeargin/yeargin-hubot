@@ -12,6 +12,7 @@
     "@slack/web-api": "^6.8.1",
     "coffee-script": "~1.6",
     "hubot": "^4.1.0",
+    "hubot-airnow-gov": "^1.1.0",
     "hubot-bcycle-finder": "^2.2.7",
     "hubot-createsend": "^1.0.20",
     "hubot-dad-jokes": "^1.0.10",
