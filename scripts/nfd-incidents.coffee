@@ -28,22 +28,21 @@ module.exports = (robot) ->
 
   robot.respond /(?:nfd|🔥|fire|:fire:)\s?(\d{5})?/i, (msg) ->
     zip = msg.match[1]
+    query = "select *, :id order by `dispatch_time` desc limit 200"
     if zip
       query = "select *, :id where (`postal_code` = 37206) order by `dispatch_time` desc limit 200"
-    else
-      query = "select *, :id order by `dispatch_time` desc limit 200"
+      
+    robot.http(baseUrl)
+        .query(
+          '$query': query 
+        )
+        .get() (err, res, body) ->
+          data = JSON.parse(body)
+          if data.length == 0
+            msg.send "No active incidents."
+            return
 
-   robot.http(baseUrl)
-      .query(
-        '$query': query 
-      )
-      .get() (err, res, body) ->
-        data = JSON.parse(body)
-        if data.length == 0
-          msg.send "No active incidents."
-          return
-
-        if robot.adapterName == 'slack'
-          msg.send "```\n#{formatTable(data, msg)}\n```"
-        else
-          msg.send formatTable(data, msg)
+          if robot.adapterName == 'slack'
+            msg.send "```\n#{formatTable(data, msg)}\n```"
+          else
+            msg.send formatTable(data, msg)
