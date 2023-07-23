@@ -37,5 +37,10 @@
     "start": "bin/hubot --adapter slack --alias '!'",
     "local": "hubot-dotenv --alias \"!\"",
     "test": "hubot-dotenv --config-check"
+  },
+  "devDependencies": {
+    "eslint": "^8.45.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
   }
 }
