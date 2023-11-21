@@ -9,7 +9,7 @@
     "url": "https://github.com/yeargin/yeargin-hubot.git"
   },
   "dependencies": {
-    "@slack/web-api": "^6.9.0",
+    "@slack/web-api": "^6.10.0",
     "coffee-script": "~1.6",
     "hubot": "^4",
     "hubot-airnow-gov": "^1.1.3",
@@ -21,7 +21,7 @@
     "hubot-fitbit-leaders": "^2.2.17",
     "hubot-grafana": "^5.0.2",
     "hubot-help": "^2.1.1",
-    "hubot-hockey": "^6.0.2",
+    "hubot-hockey": "^6.0.3",
     "hubot-homepage": "^1.0.18",
     "hubot-mailchimp": "^2.0.0",
     "hubot-nashville-electric": "^1.0.10",
@@ -39,7 +39,7 @@
     "test": "hubot-dotenv --config-check"
   },
   "devDependencies": {
-    "eslint": "^8.52.0",
+    "eslint": "^8.54.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.0"
   }
