@@ -1,4 +1,5 @@
 [
+  "@stephenyeargin/hubot-openweathermap",
   "hubot-airnow-gov",
   "hubot-bcycle-finder",
   "hubot-createsend",
