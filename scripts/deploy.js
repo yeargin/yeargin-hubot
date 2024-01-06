@@ -87,15 +87,8 @@ module.exports = (robot) => {
               attachments: [{
                 title: data.fullDisplayName,
                 title_link: data.url,
-                text: 'Click the link above to monitor.',
+                text: 'Added to build queue. Click the link above to monitor.',
                 color: 'success',
-                fields: [
-                  {
-                    title: 'Status',
-                    value: data.result,
-                    short: true,
-                  },
-                ],
               }],
               thread_ts: threadId,
             });
