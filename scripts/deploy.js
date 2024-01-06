@@ -36,7 +36,8 @@ module.exports = (robot) => {
       Authorization: `Basic ${auth}`,
     };
     const branch = msg.match[1] || 'main';
-    const threadId = msg.message.ts;
+    const threadId = msg.message.rawMessage.ts;
+    robot.logger.debug({ branch, threadId });
     msg.send({
       username: 'Jenkins',
       icon_emoji: ':shipit:',
