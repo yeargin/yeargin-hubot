@@ -18,13 +18,14 @@ module.exports = (robot) => {
     robot.logger.error(err || res.statusMessage);
     robot.logger.error(body);
     msg.send({
+      username: 'jenkins',
+      icon_emoji: ':cry:',
       attachments: [{
         text: `**Error deploying:** ${err?.message || res.statusMessage}`,
-        username: 'jenkins',
-        icon_emoji: ':cry:',
-        thread_ts: threadId,
         color: 'danger',
+        mrkdwn_in: ['text'],
       }],
+      thread_ts: threadId,
     });
   };
 
@@ -37,14 +38,15 @@ module.exports = (robot) => {
     const branch = msg.match[1] || 'main';
     const threadId = msg.message.ts;
     msg.send({
+      username: 'Jenkins',
+      icon_emoji: ':shipit:',
       attachments: [{
         text: `Starting deploy of \`${branch}\` ...`,
-        username: 'Jenkins',
-        icon_emoji: ':shipit:',
+        mrkdwn_in: ['text'],
         color: 'blue',
       }],
     });
-    robot.http(`${process.env.HUBOT_JENKINS_URL}/job/${process.env.HUBOT_JENKINS_JOB}`)
+    robot.http(`${process.env.HUBOT_JENKINS_URL}/job/${process.env.HUBOT_JENKINS_JOB}/buildWithParameters`)
       .headers(headers)
       .post({
         BRANCH: branch,
@@ -58,13 +60,14 @@ module.exports = (robot) => {
           return;
         }
         msg.send({
+          username: 'Jenkins',
+          icon_emoji: ':hourglass:',
           attachments: [{
             text: `Deploy of \`${branch}\` started. Getting status ...`,
-            username: 'Jenkins',
-            icon_emoji: ':hourglass:',
-            thread_ts: threadId,
+            mrkdwn_in: ['text'],
             color: 'success',
           }],
+          thread_ts: threadId,
         });
         robot.http(`${process.env.HUBOT_JENKINS_URL}/job/${process.env.HUBOT_JENKINS_JOB}/api/json`)
           .headers(headers)
@@ -79,13 +82,12 @@ module.exports = (robot) => {
             }
             const data = JSON.parse(body2);
             msg.send({
+              username: 'Jenkins',
+              icon_emoji: ':white_checkmark:',
               attachments: [{
                 title: data.fullDisplayName,
                 title_link: data.url,
                 text: 'Click the link above to monitor.',
-                username: 'Jenkins',
-                icon_emoji: ':white_checkmark:',
-                thread_ts: threadId,
                 color: 'success',
                 fields: [
                   {
@@ -95,6 +97,7 @@ module.exports = (robot) => {
                   },
                 ],
               }],
+              thread_ts: threadId,
             });
           });
       });
