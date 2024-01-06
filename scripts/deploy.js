@@ -26,8 +26,8 @@ module.exports = (robot) => {
         robot.logger.debug(res);
         robot.logger.debug(body);
         if (err || res.statusCode !== 201) {
-          robot.logger.error(err);
-          msg.send(err.message || res.statusMessage);
+          robot.logger.error(err || res.statusMessage);
+          msg.send(err?.message || res.statusMessage);
           return;
         }
         msg.send('Deployment initiated.');
