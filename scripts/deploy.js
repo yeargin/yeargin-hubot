@@ -18,8 +18,6 @@ module.exports = (robot) => {
     robot.logger.error(err || res.statusMessage);
     robot.logger.error(body);
     msg.send({
-      username: 'jenkins',
-      icon_emoji: ':cry:',
       attachments: [{
         text: `**Error deploying:** ${err?.message || res.statusMessage}`,
         color: 'danger',
@@ -39,13 +37,12 @@ module.exports = (robot) => {
     const threadId = msg.message.rawMessage.ts;
     robot.logger.debug({ branch, threadId });
     msg.send({
-      username: 'Jenkins',
-      icon_emoji: ':shipit:',
       attachments: [{
         text: `Starting deploy of \`${branch}\` ...`,
         mrkdwn_in: ['text'],
         color: 'blue',
       }],
+      thread_ts: threadId,
     });
     robot.http(`${process.env.HUBOT_JENKINS_URL}/job/${process.env.HUBOT_JENKINS_JOB}/buildWithParameters`)
       .headers(headers)
@@ -61,10 +58,8 @@ module.exports = (robot) => {
           return;
         }
         msg.send({
-          username: 'Jenkins',
-          icon_emoji: ':hourglass:',
           attachments: [{
-            text: `Deploy of \`${branch}\` started. Getting status ...`,
+            text: `Deploy added to queue. Getting status ...`,
             mrkdwn_in: ['text'],
             color: 'success',
           }],
@@ -83,13 +78,11 @@ module.exports = (robot) => {
             }
             const data = JSON.parse(body2);
             msg.send({
-              username: 'Jenkins',
-              icon_emoji: ':white_checkmark:',
               attachments: [{
                 title: data.fullDisplayName,
                 title_link: data.url,
-                text: 'Added to build queue. Click the link above to monitor.',
-                color: 'success',
+                text: 'Click the link above to monitor.',
+                color: 'good',
               }],
               thread_ts: threadId,
             });
