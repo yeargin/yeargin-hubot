@@ -17,5 +17,6 @@
   "hubot-pollen",
   "hubot-redis-brain",
   "hubot-redmine",
-  "hubot-shipit"
+  "hubot-shipit",
+  "hubot-untappd-friends"
 ]
