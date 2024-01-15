@@ -9,8 +9,8 @@
     "url": "https://github.com/yeargin/yeargin-hubot.git"
   },
   "dependencies": {
-    "@slack/web-api": "^6.11.1",
-    "@stephenyeargin/hubot-openweathermap": "^1.1.0",
+    "@slack/web-api": "^6.11.2",
+    "@stephenyeargin/hubot-openweathermap": "^1.1.1",
     "ascii-table": "^0.0.9",
     "coffee-script": "~1.6",
     "dayjs": "^1.11.10",
@@ -35,7 +35,7 @@
     "hubot-redmine": "^1.1.1",
     "hubot-shipit": "^0.2.1",
     "hubot-slack": "^4.10.0",
-    "hubot-untappd-friends": "^1.9.1"
+    "hubot-untappd-friends": "^1.10.0"
   },
   "scripts": {
     "start": "bin/hubot --adapter slack --alias '!'",
