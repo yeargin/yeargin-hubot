@@ -1,9 +1,12 @@
-FROM node:20
+FROM node:20-bullseye
+
+# Set non-interactive mode for apt-get
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Install required packages
 RUN apt-get update && \
-   apt-get install -y libfuzzy-dev libicu-dev redis-server && \
-   rm -rf /var/lib/apt/lists/*
+    apt-get install -y --no-install-recommends libfuzzy-dev libicu-dev redis-server && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Move files into place
 WORKDIR /opt/hubot
