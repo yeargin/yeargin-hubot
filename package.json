@@ -9,10 +9,10 @@
     "url": "https://github.com/yeargin/yeargin-hubot.git"
   },
   "dependencies": {
-    "@slack/web-api": "^7.5.0",
+    "@slack/web-api": "^7.3.1",
     "@stephenyeargin/hubot-openweathermap": "^1.2.1",
     "ascii-table": "^0.0.9",
-    "coffee-script": "~1.12",
+    "coffee-script": "~1.6",
     "dayjs": "^1.11.13",
     "hubot": "^4",
     "hubot-airnow-gov": "^1.1.6",
