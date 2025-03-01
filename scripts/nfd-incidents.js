@@ -54,7 +54,7 @@ module.exports = (robot) => {
       .query(query)
       .get()((err, res, body) => {
         const data = JSON.parse(body);
-        if (data.length === 0) {
+        if (data.features?.length === 0) {
           msg.send('No active incidents.');
           return;
         }

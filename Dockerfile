@@ -21,7 +21,7 @@ USER hubot
 RUN npm install
 
 # Default adapter and name
-ENV HUBOT_ADAPTER slack
+ENV HUBOT_ADAPTER @hubot-friends/hubot-slack
 ENV HUBOT_NAME hubot
 
 EXPOSE 8080

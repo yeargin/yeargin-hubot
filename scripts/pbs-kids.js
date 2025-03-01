@@ -31,58 +31,42 @@ module.exports = (robot) => {
       const runtime = Math.round(episode.duration / 60);
 
       if (/slack/.test(robot.adapterName)) {
-        // eslint-disable-next-line global-require
-        const { WebClient } = require('@slack/web-api');
-        const slackWebClient = new WebClient(process.env.HUBOT_SLACK_TOKEN);
-        const payload = {
-          as_user: false,
-          username: 'PBS Kids',
-          icon_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/PBS_Kids_logo_%282022%29.svg/240px-PBS_Kids_logo_%282022%29.svg.png',
-          blocks: [
+        // Use Hubot's built-in Slack message sending capabilities
+        const slackMessage = {
+          attachments: [
             {
-              type: 'header',
-              text: {
-                type: 'plain_text',
-                text: episode.title,
-              },
-            },
-            {
-              type: 'image',
-              image_url: `${episode.images['kids-mezzannine-16x9'].url}`,
-              alt_text: episode.title,
-            },
-            {
-              type: 'section',
+              color: '#36a64f', // Green color for the message
+              title: episode.title,
               fields: [
                 {
-                  type: 'mrkdwn',
-                  text: `*Episode:* ${episode.nola_episode}`,
+                  title: 'Episode',
+                  value: episode.nola_episode,
+                  short: true,
                 },
                 {
-                  type: 'mrkdwn',
-                  text: `*Encore Date:* ${encoreDate}`,
+                  title: 'Encore Date',
+                  value: encoreDate,
+                  short: true,
                 },
                 {
-                  type: 'mrkdwn',
-                  text: `*Premier Date:* ${premierDate}`,
+                  title: 'Premier Date',
+                  value: premierDate,
+                  short: true,
                 },
                 {
-                  type: 'mrkdwn',
-                  text: `*Runtime:* ${runtime} minutes`,
+                  title: 'Runtime',
+                  value: `${runtime} minutes`,
+                  short: true,
                 },
               ],
-            },
-            {
-              type: 'section',
-              text: {
-                type: 'mrkdwn',
-                text: episode.description,
-              },
+              image_url: `${episode.images['kids-mezzannine-16x9'].url}`, // Episode image
+              text: episode.description, // Episode description
             },
           ],
-          channel: msg.message.room,
         };
-        slackWebClient.chat.postMessage(payload);
+
+        // Send the message to the Slack room (channel)
+        msg.send(slackMessage);
         return;
       }
       msg.send(`${encoreDate}: ${episode.title}`);

@@ -9,42 +9,40 @@
     "url": "https://github.com/yeargin/yeargin-hubot.git"
   },
   "dependencies": {
-    "@slack/web-api": "^7.3.1",
-    "@stephenyeargin/hubot-openweathermap": "^1.2.1",
+    "@hubot-friends/hubot-slack": "^3.1.3",
+    "@slack/web-api": "^7.8.0",
+    "@stephenyeargin/hubot-openweathermap": "^1.2.3",
     "ascii-table": "^0.0.9",
-    "coffeescript": "jashkenas/coffeescript#7b9fbf2c7694c38b71f921ac370f33cdcf835242",
     "dayjs": "^1.11.13",
-    "hubot": "^4",
-    "hubot-airnow-gov": "^1.2.0",
-    "hubot-bcycle-finder": "^2.3.2",
-    "hubot-createsend": "^1.1.2",
-    "hubot-dad-jokes": "^1.1.3",
-    "hubot-diagnostics": "hubotio/hubot-diagnostics#3b6d7ba732ee8aa0e7ba2e8345a02510278ce280",
+    "hubot": "^11",
+    "hubot-airnow-gov": "^1.2.2",
+    "hubot-bcycle-finder": "^2.3.3",
+    "hubot-createsend": "^1.1.3",
+    "hubot-dad-jokes": "^1.1.4",
+    "hubot-diagnostics": "^2.1.3",
     "hubot-dotenv": "^1.0.0",
-    "hubot-fitbit-leaders": "^2.3.2",
-    "hubot-grafana": "^7.0.3",
-    "hubot-help": "hubotio/hubot-help#92f12df9d9f1373a332578f60c4e1830f72269cc",
-    "hubot-hockey": "^6.4.0",
-    "hubot-homepage": "^1.1.4",
+    "hubot-fitbit-leaders": "^2.3.3",
+    "hubot-grafana": "^7.0.5",
+    "hubot-help": "^2.1.5",
+    "hubot-hockey": "^6.4.1",
+    "hubot-homepage": "^1.1.5",
     "hubot-mailchimp": "^2.0.3",
-    "hubot-nashville-electric": "^1.2.2",
-    "hubot-nashville-news": "^1.1.3",
+    "hubot-nashville-electric": "^1.2.3",
+    "hubot-nashville-news": "^1.1.4",
     "hubot-nextbus": "^2.2.2",
-    "hubot-pollen": "^1.2.2",
+    "hubot-pollen": "^1.2.3",
     "hubot-redis-brain": "hubotio/hubot-redis-brain#main",
     "hubot-redmine": "^1.2.3",
-    "hubot-shipit": "^0.2.1",
-    "hubot-slack": "^4.10.0",
-    "hubot-untappd-friends": "^1.11.1"
+    "hubot-untappd-friends": "^1.11.2"
   },
   "scripts": {
-    "start": "bin/hubot --adapter slack --alias '!'",
+    "start": "hubot --adapter @hubot-friends/hubot-slack --alias '!'",
     "local": "hubot-dotenv --alias \"!\"",
     "test": "hubot-dotenv --config-check"
   },
   "devDependencies": {
     "eslint": "^8",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.29.1"
+    "eslint-plugin-import": "^2.31.0"
   }
 }
