@@ -7,7 +7,6 @@
 //   hubot sigep website - List most recently updated pages
 //
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 const _ = require('lodash');
 
 module.exports = (robot) => {

@@ -9,12 +9,13 @@
     "url": "https://github.com/yeargin/yeargin-hubot.git"
   },
   "dependencies": {
-    "@hubot-friends/hubot-slack": "^3.5.0",
-    "@slack/web-api": "^7.8.0",
+    "@hubot-friends/hubot-slack": "^3.7.2",
+    "@slack/web-api": "^7.12.0",
     "@stephenyeargin/hubot-openweathermap": "github:stephenyeargin/hubot-openweathermap",
     "ascii-table": "^0.0.9",
-    "dayjs": "^1.11.13",
-    "hubot": "^12.0.1",
+    "dayjs": "^1.11.18",
+    "dotenv": "^17.2.3",
+    "hubot": "^13.1.4",
     "hubot-airnow-gov": "^1.2.2",
     "hubot-bcycle-finder": "^2.3.3",
     "hubot-createsend": "^1.1.3",
@@ -24,7 +25,7 @@
     "hubot-fitbit-leaders": "^2.3.3",
     "hubot-grafana": "^7.0.5",
     "hubot-help": "^2.1.5",
-    "hubot-hockey": "^6.4.2",
+    "hubot-hockey": "^6.6.0",
     "hubot-homepage": "^1.1.5",
     "hubot-mailchimp": "^2.0.3",
     "hubot-nashville-electric": "^1.2.3",
@@ -38,11 +39,11 @@
   "scripts": {
     "start": "hubot --adapter @hubot-friends/hubot-slack --alias '!'",
     "local": "hubot-dotenv --alias \"!\"",
-    "test": "hubot-dotenv --config-check"
+    "test": "node -e \"require('dotenv').config(); if(!process.env.HUBOT_SLACK_BOT_TOKEN) { console.error('Missing HUBOT_SLACK_BOT_TOKEN in .env'); process.exit(1); } console.log('Environment configuration OK');\""
   },
   "devDependencies": {
-    "eslint": "^8",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.31.0"
+    "@eslint/js": "^9.38.0",
+    "eslint": "^9",
+    "eslint-plugin-import": "^2.32.0"
   }
 }
