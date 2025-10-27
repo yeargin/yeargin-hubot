@@ -71,14 +71,18 @@ module.exports = (robot) => {
     }
     robot.logger.debug({ branch, threadId });
     sendMsg(msg, `Starting deploy of \`${branch}\` ...`, { color: '#439FE0', threadId })
-    robot.http(`${process.env.HUBOT_JENKINS_URL}/job/${encodeURIComponent(process.env.HUBOT_JENKINS_JOB)}/buildWithParameters`)
+    const buildUrl = `${process.env.HUBOT_JENKINS_URL}/job/${process.env.HUBOT_JENKINS_JOB}/buildWithParameters`
+    const postData = { BRANCH: branch }
+    robot.logger.info(`POST ${buildUrl}`)
+    robot.logger.info(`Payload: ${JSON.stringify(postData)}`)
+    robot.http(buildUrl)
       .headers(headers)
       .timeout(15000)
-      .post({
-        BRANCH: branch,
-      })((err, res, body) => {
-        robot.logger.debug({ statusCode: res && res.statusCode, headers: res && res.headers })
+      .post(postData)((err, res, body) => {
+        robot.logger.info({ statusCode: res && res.statusCode })
+        robot.logger.debug({ headers: res && res.headers })
         robot.logger.debug({ bodyLength: body && body.length })
+        robot.logger.debug({ body })
         if (err || res.statusCode !== 201) {
           handleError({
             err, res, body, msg, threadId,
@@ -86,11 +90,14 @@ module.exports = (robot) => {
           return;
         }
         sendMsg(msg, 'Deploy added to queue. Getting status ...', { color: 'good', threadId })
-        robot.http(`${process.env.HUBOT_JENKINS_URL}/job/${encodeURIComponent(process.env.HUBOT_JENKINS_JOB)}/api/json`)
+        const statusUrl = `${process.env.HUBOT_JENKINS_URL}/job/${process.env.HUBOT_JENKINS_JOB}/api/json`
+        robot.logger.info(`GET ${statusUrl}`)
+        robot.http(statusUrl)
           .headers(headers)
           .timeout(15000)
           .get()((err2, res2, body2) => {
-            robot.logger.debug({ statusCode: res2 && res2.statusCode, headers: res2 && res2.headers })
+            robot.logger.info({ statusCode: res2 && res2.statusCode })
+            robot.logger.debug({ headers: res2 && res2.headers })
             robot.logger.debug({ bodyLength: body2 && body2.length })
             if (err2 || res2.statusCode !== 200) {
               handleError({
