@@ -31,7 +31,7 @@
     "hubot-nashville-electric": "^1.2.3",
     "hubot-nashville-news": "^1.1.4",
     "hubot-nextbus": "^2.2.2",
-    "hubot-pollen": "^1.2.5",
+    "hubot-pollen": "^1.3.0",
     "hubot-redis-brain": "hubotio/hubot-redis-brain#main",
     "hubot-redmine": "^1.2.3",
     "hubot-untappd-friends": "^1.11.2"
