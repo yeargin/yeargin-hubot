@@ -68,7 +68,7 @@ module.exports = (robot) => {
     table.addRow(['Brain Users', brainUsers]);
 
     // Send formatted output based on adapter
-    if (/slack/.test(robot.adapterName)) {
+    if (/(slack|discord)/i.test(robot.adapterName)) {
       msg.send(`\`\`\`\n${table.toString()}\n\`\`\``);
     } else {
       msg.send(table.toString());
