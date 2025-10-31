@@ -12,7 +12,7 @@
 //   HUBOT_JENKINS_JOB - Job ID for Hubot deployment
 
 module.exports = (robot) => {
-  const isSlack = /slack/.test(robot.adapterName)
+  const isSlack = /slack/i.test(robot.adapterName)
 
   const sendMsg = (msg, text, {
     color, title, title_link: titleLink, threadId,
