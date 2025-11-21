@@ -5,6 +5,9 @@
     "install": {
       "nodejs": {
         "pkg-path": "nodejs"
+      },
+      "ollama": {
+        "pkg-path": "ollama"
       }
     },
     "hook": {
@@ -14,8 +17,7 @@
     "options": {},
     "services": {
       "ollama": {
-        "command": "ollama serve",
-        "is-daemon": true
+        "command": "ollama serve"
       }
     }
   },
@@ -139,6 +141,122 @@
         "dev": "/nix/store/x62pydw9kpd88m4986kyc02q8x3ipp3j-nodejs-22.20.0-dev",
         "libv8": "/nix/store/hx91x0nj1h9jigh5sm08mvd4cas3aw48-nodejs-22.20.0-libv8",
         "out": "/nix/store/nvf9kaarb9kqqdbygl9cbzhli1y8yjik-nodejs-22.20.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "ollama",
+      "broken": false,
+      "derivation": "/nix/store/dhgr2z66qpjv79ni5ghjz262nj45xyxy-ollama-0.12.6.drv",
+      "description": "Get up and running with large language models locally",
+      "install_id": "ollama",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b3d51a0365f6695e7dd5cdf3e180604530ed33b4",
+      "name": "ollama-0.12.6",
+      "pname": "ollama",
+      "rev": "b3d51a0365f6695e7dd5cdf3e180604530ed33b4",
+      "rev_count": 888552,
+      "rev_date": "2025-11-02T19:18:41Z",
+      "scrape_date": "2025-11-04T00:35:43.090433Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.12.6",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/qmj8pj0xc62ch9km72i9yhzrkn677jsd-ollama-0.12.6"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "ollama",
+      "broken": false,
+      "derivation": "/nix/store/7y632l5ar1f90ydlsr39qq7x0c9qsmv7-ollama-0.12.6.drv",
+      "description": "Get up and running with large language models locally",
+      "install_id": "ollama",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b3d51a0365f6695e7dd5cdf3e180604530ed33b4",
+      "name": "ollama-0.12.6",
+      "pname": "ollama",
+      "rev": "b3d51a0365f6695e7dd5cdf3e180604530ed33b4",
+      "rev_count": 888552,
+      "rev_date": "2025-11-02T19:18:41Z",
+      "scrape_date": "2025-11-05T16:29:39.317161Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.12.6",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/wyn31940qghf2dvmc2pzy9bfi2kiyr3v-ollama-0.12.6"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "ollama",
+      "broken": false,
+      "derivation": "/nix/store/zmban09zf8riiwmyixi1k526yz1spsgp-ollama-0.12.6.drv",
+      "description": "Get up and running with large language models locally",
+      "install_id": "ollama",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b3d51a0365f6695e7dd5cdf3e180604530ed33b4",
+      "name": "ollama-0.12.6",
+      "pname": "ollama",
+      "rev": "b3d51a0365f6695e7dd5cdf3e180604530ed33b4",
+      "rev_count": 888552,
+      "rev_date": "2025-11-02T19:18:41Z",
+      "scrape_date": "2025-11-05T16:55:22.781422Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.12.6",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/a0h583zbxl2kpzc1rnpjgxhw3d94khhc-ollama-0.12.6"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "ollama",
+      "broken": false,
+      "derivation": "/nix/store/3mmzg2p5wjmpxlx3mahkw1j9wbyz3qgm-ollama-0.12.6.drv",
+      "description": "Get up and running with large language models locally",
+      "install_id": "ollama",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b3d51a0365f6695e7dd5cdf3e180604530ed33b4",
+      "name": "ollama-0.12.6",
+      "pname": "ollama",
+      "rev": "b3d51a0365f6695e7dd5cdf3e180604530ed33b4",
+      "rev_count": 888552,
+      "rev_date": "2025-11-02T19:18:41Z",
+      "scrape_date": "2025-11-05T17:21:32.583055Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.12.6",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/337mcln17pl85dv6wlj973785q4d1g3h-ollama-0.12.6"
       },
       "system": "x86_64-linux",
       "group": "toplevel",

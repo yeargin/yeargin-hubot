@@ -16,6 +16,7 @@ version = 1
 ## -------------------------------------------------------------------
 [install]
 nodejs.pkg-path = "nodejs"
+ollama.pkg-path = "ollama"
 
 
 ## Environment Variables ---------------------------------------------
@@ -102,5 +103,4 @@ on-activate = """
 # cuda-detection = false
 
 [services.ollama]
-is-daemon = true
 command = "ollama serve"
