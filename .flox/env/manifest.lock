@@ -17,7 +17,11 @@
     "options": {},
     "services": {
       "ollama": {
-        "command": "ollama serve"
+        "command": "ollama serve",
+        "is-daemon": true,
+        "shutdown": {
+          "command": "pkill -f 'ollama serve'"
+        }
       }
     }
   },

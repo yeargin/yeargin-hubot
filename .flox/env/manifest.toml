@@ -104,3 +104,7 @@ on-activate = """
 
 [services.ollama]
 command = "ollama serve"
+is-daemon = true
+
+[services.ollama.shutdown]
+command = "pkill -f 'ollama serve'"
