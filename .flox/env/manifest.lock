@@ -17,10 +17,10 @@
     "options": {},
     "services": {
       "ollama": {
-        "command": "ollama serve",
+        "command": "./bin/ollama-service.sh start",
         "is-daemon": true,
         "shutdown": {
-          "command": "pkill -f 'ollama serve'"
+          "command": "./bin/ollama-service.sh stop"
         }
       }
     }

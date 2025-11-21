@@ -103,8 +103,8 @@ on-activate = """
 # cuda-detection = false
 
 [services.ollama]
-command = "ollama serve"
+command = "./bin/ollama-service.sh start"
 is-daemon = true
 
 [services.ollama.shutdown]
-command = "pkill -f 'ollama serve'"
+command = "./bin/ollama-service.sh stop"
