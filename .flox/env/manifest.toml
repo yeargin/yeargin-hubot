@@ -100,3 +100,7 @@ on-activate = """
 # ]
 # Uncomment to disable CUDA detection.
 # cuda-detection = false
+
+[services.ollama]
+is-daemon = true
+command = "ollama serve"
