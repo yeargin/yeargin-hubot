@@ -2,22 +2,19 @@
 
 ## Project Overview
 
-This is a **Hubot** chatbot instance designed for Slack integration, deployed via Docker. Hubot is GitHub's chat automation framework built on Node.js. This bot provides custom commands for Nashville-area services, organizational tools, and home automation.
+This is a **Hubot** chatbot instance designed for Slack integration. Hubot is GitHub's chat automation framework built on Node.js. This bot provides custom commands for Nashville-area services, organizational tools, and home automation.
 
 ## Architecture
 
 ### Component Structure
 - **Adapter**: `@hubot-friends/hubot-slack` - connects to Slack using Socket Mode
-- **Brain**: `hubot-redis-brain` - persists data in Redis (containerized)
+- **Brain**: `hubot-redis-brain` - persists data in Redis
 - **Scripts**: Two types
   - **External scripts** (`external-scripts.json`): npm packages auto-loaded from `node_modules/`
   - **Custom scripts** (`scripts/*.js`): organization-specific commands
 
-### Docker Setup
-The bot runs in a multi-container setup (`docker-compose.yml`):
-- `redis` service: Persistent storage on port 16379
-- `hubot` service: Bot runtime, mounts code volume for development
-- Environment via `.env` file (copy from `.env-dist` template)
+### Runtime
+The bot runs with the Slack adapter (`@hubot-friends/hubot-slack`) and persists data via `hubot-redis-brain`. Configure environment in `.env` (copy from `.env-dist`).
 
 ## Development Workflow
 
@@ -30,8 +27,9 @@ cp .env-dist .env
 # Run locally (shell adapter)
 npm run local
 
-# Run with Slack adapter (in Docker)
-docker-compose up --build
+# Run with Slack adapter
+source .env
+npm start
 ```
 
 ### Testing Commands
@@ -84,7 +82,7 @@ module.exports = (robot) => {
 3. **Slack Block Kit messages**: For rich formatting, use Slack Web API directly (see `scripts/sigep.js`)
    ```javascript
    const { WebClient } = require('@slack/web-api');
-   const slackWebClient = new WebClient(process.env.HUBOT_SLACK_TOKEN);
+   const slackWebClient = new WebClient(process.env.HUBOT_SLACK_BOT_TOKEN);
    slackWebClient.chat.postMessage({ /* payload */ });
    ```
 
@@ -123,7 +121,7 @@ Uses **Airbnb ESLint** config (`.eslintrc.js`):
 
 Critical variables (see `.env-dist` for complete list):
 - `HUBOT_SLACK_APP_TOKEN` / `HUBOT_SLACK_BOT_TOKEN`: Slack Socket Mode auth
-- `REDIS_URL`: Set automatically in Docker to `redis://yeargin-redis:16379`
+- `REDIS_URL`: Set to your Redis server (e.g., `redis://localhost:6379`)
 - Service-specific: Most external scripts require API keys (Fitbit, Mailchimp, etc.)
 
 ## Custom Scripts Overview
@@ -137,7 +135,7 @@ Critical variables (see `.env-dist` for complete list):
 ## Testing New Scripts
 
 1. Add script to `scripts/` directory
-2. Restart bot: `docker-compose restart hubot`
+2. Restart the bot process
 3. Test in Slack with `!help` to verify registration
 4. Use `HUBOT_LOG_LEVEL=debug` in `.env` for troubleshooting
 

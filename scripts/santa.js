@@ -45,10 +45,10 @@ module.exports = (robot) => {
       }
 
       try {
-        const slackToken = process.env.HUBOT_SLACK_TOKEN;
+        const slackToken = process.env.HUBOT_SLACK_BOT_TOKEN;
         if(!slackToken) {
           return res.reply(
-            "Slack token not configured. Please set HUBOT_SLACK_TOKEN."
+            "Slack token not configured. Please set HUBOT_SLACK_BOT_TOKEN."
           );
         }
 
@@ -101,7 +101,7 @@ module.exports = (robot) => {
     // Send message
     try {
       if(isSlack) {
-        const slackToken = process.env.HUBOT_SLACK_TOKEN;
+        const slackToken = process.env.HUBOT_SLACK_BOT_TOKEN;
         const web = new WebClient(slackToken);
 
         const threadTS =
