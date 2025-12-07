@@ -16,7 +16,7 @@
   "hubot-nextbus",
   "hubot-ollama",
   "hubot-pollen",
-  "hubot-redis-brain",
+  "hubot-file-brain",
   "hubot-redmine",
   "hubot-untappd-friends"
 ]
