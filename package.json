@@ -11,7 +11,7 @@
   "dependencies": {
     "@hubot-friends/hubot-slack": "^3.7.2",
     "@slack/web-api": "^7.13.0",
-    "@stephenyeargin/hubot-openweathermap": "github:stephenyeargin/hubot-openweathermap#v1.2.7",
+    "@stephenyeargin/hubot-openweathermap": "^2.0.0",
     "ascii-table": "^0.0.9",
     "dayjs": "^1.11.19",
     "dotenv": "^17.2.3",
@@ -43,7 +43,7 @@
     "test": "node -e \"require('dotenv').config(); if(!process.env.HUBOT_SLACK_BOT_TOKEN) { console.error('Missing HUBOT_SLACK_BOT_TOKEN in .env'); process.exit(1); } console.log('Environment configuration OK');\""
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
+    "@eslint/js": "^9.39.2",
     "eslint": "^9",
     "eslint-plugin-import": "^2.32.0"
   }

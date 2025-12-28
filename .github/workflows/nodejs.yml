@@ -17,10 +17,10 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-        registry-url: https://npm.pkg.github.com/
+        # registry-url: https://npm.pkg.github.com/
 
-    - name: Authenticate to GitHub Packages
-      run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+    # - name: Authenticate to GitHub Packages
+    #   run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
     - name: npm install, build
       run: |
