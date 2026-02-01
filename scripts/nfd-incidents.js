@@ -84,18 +84,26 @@ module.exports = (robot) => {
     return robot.http(baseUrl)
       .query(query)
       .get()((err, res, body) => {
+        if (err || res.statusCode !== 200) {
+          robot.logger.error({ err, body });
+          msg.send('Error fetching NFD active incidents');
+        }
+
         const data = JSON.parse(body);
         if (data.features?.length === 0) {
           msg.send('No active incidents.');
           return;
         }
 
+        const output = formatTable(data);
+
         const adapterName = robot.adapterName ?? robot.adapter?.name;
-        if (/slack/.test(adapterName)) {
-          msg.send(`\`\`\`\n${formatTable(data, msg)}\n\`\`\``);
+        if (/slack/i.test(adapterName)) {
+          msg.send(`\`\`\`\n${output}\n\`\`\``);
           return;
         }
-        msg.send(formatTable(data, msg));
+
+        msg.send(output);
       });
   });
 };
