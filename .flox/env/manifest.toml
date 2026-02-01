@@ -17,6 +17,9 @@ version = 1
 [install]
 nodejs.pkg-path = "nodejs"
 ollama.pkg-path = "ollama"
+flox-mcp-server.pkg-path = "flox/flox-mcp-server"
+flox-mcp-server.systems = ["x86_64-linux", "aarch64-darwin", "aarch64-linux"]
+flox-mcp-server.pkg-group = "flox-mcp-server"
 
 
 ## Environment Variables ---------------------------------------------
