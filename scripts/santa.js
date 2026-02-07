@@ -33,8 +33,8 @@ module.exports = (robot) => {
     const arg = res.match[1].trim(); // URL or "me" alone
     let imageURL;
 
-    const isSlack =
-      (robot.adapterName || robot.adapter?.name || "").toLowerCase().includes("slack");
+    const adapterName = robot.adapter?.name ?? robot.adapterName ?? '';
+    const isSlack = /slack/i.test(adapterName)
 
     // Case 1: user typed only "me"
     if(arg.toLowerCase() === "me") {

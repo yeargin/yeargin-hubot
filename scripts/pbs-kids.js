@@ -30,7 +30,8 @@ module.exports = (robot) => {
       const encoreDate = (new Date(episode.encored_on)).toLocaleDateString();
       const runtime = Math.round(episode.duration / 60);
 
-      if (/slack/.test(robot.adapterName)) {
+      const adapterName = robot.adapter?.name ?? robot.adapterName ?? '';
+      if (/slack/i.test(adapterName)) {
         // Use Hubot's built-in Slack message sending capabilities
         const slackMessage = {
           attachments: [

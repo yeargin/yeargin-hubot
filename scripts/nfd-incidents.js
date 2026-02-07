@@ -97,7 +97,7 @@ module.exports = (robot) => {
 
         const output = formatTable(data);
 
-        const adapterName = robot.adapterName ?? robot.adapter?.name;
+        const adapterName = robot.adapter?.name ?? robot.adapterName ?? '';
         if (/slack/i.test(adapterName)) {
           msg.send(`\`\`\`\n${output}\n\`\`\``);
           return;

@@ -74,7 +74,8 @@ module.exports = (robot) => {
 
 2. **Slack-specific formatting**: Check adapter name before using Slack features
    ```javascript
-   if (/slack/.test(robot.adapterName)) {
+   const adapterName = robot.adapter?.name ?? robot.adapterName ?? '';
+   if (/slack/i.test(adapterName)) {
      msg.send(`\`\`\`\n${table}\n\`\`\``);  // Code block
    }
    ```

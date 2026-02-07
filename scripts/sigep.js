@@ -80,7 +80,8 @@ module.exports = (robot) => {
         ));
         if (filteredChapter) {
           const fallback = `${filteredChapter.chapterdesignation} - ${filteredChapter.dyadinstitutionalid}\nManpower: ${filteredChapter.currentchaptersize} - ${filteredChapter.website}`;
-          if (robot.adapterName.includes('slack')) {
+          const adapterName = robot.adapter?.name ?? robot.adapterName ?? '';
+          if (/slack/i.test(adapterName)) {
             const { WebClient } = require('@slack/web-api');
             const slackWebClient = new WebClient(process.env.HUBOT_SLACK_TOKEN);
             const payload = {
@@ -193,7 +194,8 @@ module.exports = (robot) => {
     try {
       const pages = JSON.parse(body);
       const formattedLines = pages.map((row) => `${row.modified} | ${row.link}`);
-      if (robot.adapterName === 'slack') {
+      const adapterName = robot.adapter?.name ?? robot.adapterName ?? '';
+      if (/slack/i.test(adapterName)) {
         msg.send(`\`\`\`\n${formattedLines.join('\n')}\n\`\`\``);
         return;
       }

@@ -119,7 +119,8 @@ module.exports = (robot) => {
     table.addRow(['Network Interfaces', networkSummary]);
 
     // Send formatted output based on adapter
-    if (/(slack|discord)/i.test(robot.adapterName)) {
+    const adapterName = robot.adapter?.name ?? robot.adapterName ?? '';
+    if (/(slack|discord)/i.test(adapterName)) {
       msg.send(`\`\`\`\n${table.toString()}\n\`\`\``);
     } else {
       msg.send(table.toString());
