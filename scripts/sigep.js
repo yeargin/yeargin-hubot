@@ -83,7 +83,7 @@ module.exports = (robot) => {
           const adapterName = robot.adapter?.name ?? robot.adapterName ?? '';
           if (/slack/i.test(adapterName)) {
             const { WebClient } = require('@slack/web-api');
-            const slackWebClient = new WebClient(process.env.HUBOT_SLACK_TOKEN);
+            const slackWebClient = new WebClient(process.env.HUBOT_SLACK_BOT_TOKEN);
             const payload = {
               as_user: false,
               username: 'SigEp',
