@@ -85,9 +85,6 @@ module.exports = (robot) => {
             const { WebClient } = require('@slack/web-api');
             const slackWebClient = new WebClient(process.env.HUBOT_SLACK_BOT_TOKEN);
             const payload = {
-              as_user: false,
-              username: 'SigEp',
-              icon_url: 'https://sigep.org/wp-content/uploads/2016/12/cropped-Jqv6fL0f-180x180.jpg',
               blocks: [
                 {
                   type: 'header',
