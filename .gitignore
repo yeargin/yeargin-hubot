@@ -3,3 +3,5 @@ node_modules
 .DS_Store*
 .hubot_history
 .env
+result-yeargin-hubot
+result-yeargin-hubot-log

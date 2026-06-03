@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -a
+source .env
+set +a
+
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+cd "$SCRIPT_DIR/../lib/yeargin-hubot" || exit
+exec node node_modules/.bin/hubot --adapter @hubot-friends/hubot-slack --alias '!' "$@"

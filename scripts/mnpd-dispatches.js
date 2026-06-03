@@ -1,3 +1,11 @@
+// Description:
+//   MNPD Active Dispatches
+//
+// Commands:
+//   hubot mnpd - Get all active dispatches
+//   hubot mnpd <area> - Filter active dispatches list to a fuzzy matched area, e.g. East
+//
+
 const dayjs = require('dayjs');
 const AsciiTable = require('ascii-table');
 const relativeTime = require('dayjs/plugin/relativeTime');
