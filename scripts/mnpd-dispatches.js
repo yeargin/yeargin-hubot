@@ -8,6 +8,7 @@
 
 const dayjs = require('dayjs');
 const AsciiTable = require('ascii-table');
+const { WebClient } = require('@slack/web-api');
 const relativeTime = require('dayjs/plugin/relativeTime');
 const timezone = require('dayjs/plugin/timezone');
 const utc = require('dayjs/plugin/utc');
@@ -21,30 +22,47 @@ module.exports = (robot) => {
   const baseUrl =
     'https://services2.arcgis.com/HdTo6HJqh92wn4D8/arcgis/rest/services/Metro_Nashville_Police_Department_Active_Dispatch_Table_view/FeatureServer/0/query';
 
-  const formatTable = (data) => {
-    const table = new AsciiTable('👮 MNPD Active Dispatches 🚔');
-    table.setHeading('Time', 'Code', 'Type', 'Location', 'City');
+  const tableTitle = '👮 MNPD Active Dispatches 🚔';
+  const tableHeading = ['Time', 'Code', 'Type', 'Location', 'City'];
 
-    data.features
-      .sort(
-        (a, b) =>
-          b.attributes.CallReceivedTime -
-          a.attributes.CallReceivedTime
-      )
-      .forEach(({ attributes }) => {
-        table.addRow([
-          dayjs
-            .tz(attributes.CallReceivedTime, 'America/Chicago')
-            .fromNow(),
-          attributes.IncidentTypeCode,
-          attributes.IncidentTypeName,
-          attributes.Location,
-          attributes.CityName,
-        ]);
-      });
+  const buildRows = (data) => data.features
+    .sort(
+      (a, b) =>
+        b.attributes.CallReceivedTime -
+        a.attributes.CallReceivedTime
+    )
+    .map(({ attributes }) => [
+      dayjs
+        .tz(attributes.CallReceivedTime, 'America/Chicago')
+        .fromNow(),
+      attributes.IncidentTypeCode,
+      attributes.IncidentTypeName,
+      attributes.Location,
+      attributes.CityName,
+    ]);
 
+  const formatTable = (rows) => {
+    const table = new AsciiTable(tableTitle);
+    table.setHeading(...tableHeading);
+    rows.forEach((row) => table.addRow(row));
     return table.toString();
   };
+
+  const formatSlackBlocks = (rows) => ({
+    blocks: [
+      {
+        type: 'header',
+        text: { type: 'plain_text', text: tableTitle, emoji: true },
+      },
+      {
+        type: 'table',
+        rows: [tableHeading, ...rows.slice(0, 99)].map((row) => row.map((cell) => ({
+          type: 'raw_text',
+          text: String(cell ?? ''),
+        }))),
+      },
+    ],
+  });
 
   robot.respond(/(?:mnpd|👮|police|:cop:)\s*(.*)?/i, (msg) => {
     const cityName = msg.match[1]?.trim();
@@ -80,11 +98,20 @@ module.exports = (robot) => {
           return;
         }
 
-        const output = formatTable(data);
+        const rows = buildRows(data);
+        const output = formatTable(rows);
 
         const adapterName = robot.adapterName ?? robot.adapter?.name;
         if (/slack/i.test(adapterName)) {
-          msg.send(`\`\`\`\n${output}\n\`\`\``);
+          const web = new WebClient(process.env.HUBOT_SLACK_BOT_TOKEN);
+          web.chat.postMessage({
+            channel: msg.message.room,
+            text: output,
+            ...formatSlackBlocks(rows),
+          }).catch((slackErr) => {
+            robot.logger.error(slackErr);
+            msg.send('Error posting MNPD table to Slack.');
+          });
           return;
         }
 

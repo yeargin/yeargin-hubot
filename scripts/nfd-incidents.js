@@ -7,6 +7,7 @@
 
 const dayjs = require('dayjs');
 const AsciiTable = require('ascii-table');
+const { WebClient } = require('@slack/web-api');
 const relativeTime = require('dayjs/plugin/relativeTime');
 const timezone = require('dayjs/plugin/timezone');
 const utc = require('dayjs/plugin/utc');
@@ -20,10 +21,10 @@ module.exports = (robot) => {
   // Configure dayjs
   const baseUrl = 'https://services2.arcgis.com/HdTo6HJqh92wn4D8/arcgis/rest/services/Nashville_Fire_Department_Active_Incidents_view/FeatureServer/0/query';
 
-  const formatTable = (data) => {
-    const table = new AsciiTable('🔥 Nashville Fire Active Incidents 🚒');
-    table.setHeading('Time', 'Postal Code', 'Type', 'Units Dispatched');
+  const tableTitle = '🔥 Nashville Fire Active Incidents 🚒';
+  const tableHeading = ['Time', 'Postal Code', 'Type', 'Units Dispatched'];
 
+  const buildRows = (data) => {
     const events = {};
 
     data.features.forEach((row) => {
@@ -48,12 +49,12 @@ module.exports = (robot) => {
       (a, b) => b.DispatchDateTime - a.DispatchDateTime,
     );
 
-    sortedEvents.forEach((event) => {
+    return sortedEvents.map((event) => {
       const units = Array.from(event.units).sort();
       const visibleUnits = units.slice(0, 5);
       const remaining = units.length - visibleUnits.length;
 
-      table.addRow([
+      return [
         dayjs
           .tz(event.DispatchDateTime, 'America/Chicago')
           .fromNow(),
@@ -62,11 +63,32 @@ module.exports = (robot) => {
         remaining > 0
           ? `${visibleUnits.join(', ')} + ${remaining} more`
           : visibleUnits.join(', '),
-      ]);
+      ];
     });
+  };
 
+  const formatTable = (rows) => {
+    const table = new AsciiTable(tableTitle);
+    table.setHeading(...tableHeading);
+    rows.forEach((row) => table.addRow(row));
     return table.toString();
   };
+
+  const formatSlackBlocks = (rows) => ({
+    blocks: [
+      {
+        type: 'header',
+        text: { type: 'plain_text', text: tableTitle, emoji: true },
+      },
+      {
+        type: 'table',
+        rows: [tableHeading, ...rows.slice(0, 99)].map((row) => row.map((cell) => ({
+          type: 'raw_text',
+          text: String(cell ?? ''),
+        }))),
+      },
+    ],
+  });
 
   return robot.respond(/(?:nfd|🔥|fire|:fire:)\s?(\d{5})?/i, (msg) => {
     const zip = msg.match[1];
@@ -95,11 +117,20 @@ module.exports = (robot) => {
           return;
         }
 
-        const output = formatTable(data);
+        const rows = buildRows(data);
+        const output = formatTable(rows);
 
         const adapterName = robot.adapter?.name ?? robot.adapterName ?? '';
         if (/slack/i.test(adapterName)) {
-          msg.send(`\`\`\`\n${output}\n\`\`\``);
+          const web = new WebClient(process.env.HUBOT_SLACK_BOT_TOKEN);
+          web.chat.postMessage({
+            channel: msg.message.room,
+            text: output,
+            ...formatSlackBlocks(rows),
+          }).catch((slackErr) => {
+            robot.logger.error(slackErr);
+            msg.send('Error posting NFD table to Slack.');
+          });
           return;
         }
 
