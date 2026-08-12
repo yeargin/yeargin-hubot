@@ -6,6 +6,7 @@
 
 const dayjs = require('dayjs');
 const duration = require('dayjs/plugin/duration');
+const { WebClient } = require('@slack/web-api');
 const timezone = require('dayjs/plugin/timezone');
 const utc = require('dayjs/plugin/utc');
 const AsciiTable = require('ascii-table');
@@ -36,7 +37,7 @@ module.exports = (robot) => {
 
     const formatBytes = (bytes) => `${(bytes / 1024 / 1024).toFixed(2)} MB`;
 
-    const scriptCount = robot.commands ? robot.commands.length : 0;
+    const scriptCount = robot.commands?.listCommands ? robot.commands.listCommands().length : 0;
 
     const brainConnected = robot.brain?.data ? '✓ Connected' : '✗ Not Connected';
     const brainUsers = robot.brain?.data?.users
@@ -118,9 +119,36 @@ module.exports = (robot) => {
 
     table.addRow(['Network Interfaces', networkSummary]);
 
+    const tableHeading = ['Property', 'Value'];
+    const formatSlackBlocks = (rows) => ({
+      blocks: [
+        {
+          type: 'header',
+          text: { type: 'plain_text', text: 'Hubot Debug Information', emoji: true },
+        },
+        {
+          type: 'table',
+          rows: [tableHeading, ...rows.slice(0, 99)].map((row) => row.map((cell) => ({
+            type: 'raw_text',
+            text: String(cell ?? '').trim() || 'N/A',
+          }))),
+        },
+      ],
+    });
+
     // Send formatted output based on adapter
     const adapterName = robot.adapter?.name ?? robot.adapterName ?? '';
-    if (/(slack|discord)/i.test(adapterName)) {
+    if (/slack/i.test(adapterName)) {
+      const web = new WebClient(process.env.HUBOT_SLACK_BOT_TOKEN);
+      web.chat.postMessage({
+        channel: msg.message.room,
+        text: table.toString(),
+        ...formatSlackBlocks(table.getRows()),
+      }).catch((slackErr) => {
+        robot.logger.error(slackErr);
+        msg.send(`\`\`\`\n${table.toString()}\n\`\`\``);
+      });
+    } else if (/discord/i.test(adapterName)) {
       msg.send(`\`\`\`\n${table.toString()}\n\`\`\``);
     } else {
       msg.send(table.toString());
