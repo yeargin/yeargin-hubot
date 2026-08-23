@@ -24,7 +24,7 @@
     "hubot-dotenv": "^1.0.0",
     "hubot-file-brain": "throneless-tech/hubot-file-brain#0.2.0",
     "hubot-fitbit-leaders": "^2.4.0",
-    "hubot-grafana": "^7.2.0",
+    "hubot-grafana": "^7.3.0",
     "hubot-help": "^2.1.5",
     "hubot-hockey": "^6.7.0",
     "hubot-homepage": "^1.1.6",
