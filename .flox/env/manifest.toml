@@ -4,9 +4,18 @@ schema-version = "1.12.0"
 nodejs.pkg-path = "nodejs"
 figlet.pkg-path = "figlet"
 
+[vars]
+NPM_CONFIG_PREFIX = "$FLOX_ENV_CACHE/npm-global"
+
 [hook]
 on-activate = """
-  npm install
+  mkdir -p "$NPM_CONFIG_PREFIX"
+  export PATH="$NPM_CONFIG_PREFIX/bin:$PATH"
+  if find node_modules -maxdepth 1 -type l 2>/dev/null | grep -q .; then
+    echo "Skipping npm install: linked package(s) detected in node_modules"
+  else
+    npm install
+  fi
   figlet -f slant "Yeargin Hubot"
   echo ""
 """

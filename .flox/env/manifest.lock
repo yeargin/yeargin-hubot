@@ -10,8 +10,11 @@
         "pkg-path": "nodejs"
       }
     },
+    "vars": {
+      "NPM_CONFIG_PREFIX": "$FLOX_ENV_CACHE/npm-global"
+    },
     "hook": {
-      "on-activate": "  npm install\n  figlet -f slant \"Yeargin Hubot\"\n  echo \"\"\n"
+      "on-activate": "  mkdir -p \"$NPM_CONFIG_PREFIX\"\n  export PATH=\"$NPM_CONFIG_PREFIX/bin:$PATH\"\n  if find node_modules -maxdepth 1 -type l 2>/dev/null | grep -q .; then\n    echo \"Skipping npm install: linked package(s) detected in node_modules\"\n  else\n    npm install\n  fi\n  figlet -f slant \"Yeargin Hubot\"\n  echo \"\"\n"
     },
     "options": {},
     "build": {
