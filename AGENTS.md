@@ -123,7 +123,7 @@ Uses **Airbnb ESLint** config (`.eslintrc.js`):
 Critical variables (see `.env-dist` for complete list):
 - `HUBOT_SLACK_APP_TOKEN` / `HUBOT_SLACK_BOT_TOKEN`: Slack Socket Mode auth
 - `REDIS_URL`: Set to your Redis server (e.g., `redis://localhost:6379`)
-- Service-specific: Most external scripts require API keys (Fitbit, Mailchimp, etc.)
+- Service-specific: Most external scripts require API keys (OpenWeatherMap, Mailchimp, etc.)
 
 ## Custom Scripts Overview
 
