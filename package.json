@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@hubot-friends/hubot-slack": "^3.8.0",
-    "@slack/web-api": "^8.0.0",
+    "@slack/web-api": "^8.1.1",
     "@stephenyeargin/hubot-openweathermap": "^2.2.2",
     "ascii-table": "^0.0.9",
     "dayjs": "^1.11.23",
