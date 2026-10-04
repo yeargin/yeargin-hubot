@@ -1,4 +1,6 @@
-schema-version = "1.12.0"
+schema-version = "1.17.0"
+
+description = "Our home hubot."
 
 [install]
 nodejs.pkg-path = "nodejs"
@@ -15,6 +17,12 @@ on-activate = """
     echo "Skipping npm install: linked package(s) detected in node_modules"
   else
     npm install
+  fi
+  if [[ -f ".env" ]]; then
+      echo "Loading environment variables ..."
+      set -a
+      source .env
+      set +a
   fi
   figlet -f slant "Yeargin Hubot"
   echo ""
