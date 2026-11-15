@@ -127,6 +127,7 @@ Critical variables (see `.env-dist` for complete list):
 
 ## Custom Scripts Overview
 
+- **bot-logs.js**: Fetch recent bot log entries from journald (uploaded as a file on Slack)
 - **deploy.js**: Trigger Jenkins deployments via Slack
 - **nfd-incidents.js**: Nashville Fire Department active incidents via ArcGIS API
 - **pbs-kids.js**: PBS Kids episode listings
