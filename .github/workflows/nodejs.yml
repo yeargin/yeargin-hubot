@@ -31,6 +31,9 @@ jobs:
       env:
         CI: true
 
+    - name: npm run lint
+      run: npm run lint
+
     - name: npm test
       run: |
         cp .env-dist .env

@@ -69,7 +69,7 @@ module.exports = (robot) => {
       diskInfo = execSync('df -h --output=source,size,used,avail,pcent / | tail -1')
         .toString()
         .trim();
-    } catch (e) {
+    } catch {
       // ignore if command not available
     }
 
