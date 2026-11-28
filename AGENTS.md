@@ -131,6 +131,7 @@ Critical variables (see `.env-dist` for complete list):
 - **deploy.js**: Trigger Jenkins deployments via Slack
 - **nfd-incidents.js**: Nashville Fire Department active incidents via ArcGIS API
 - **pbs-kids.js**: PBS Kids episode listings
+- **startup.js**: Announce startup (host, branch, commit, versions) to `#hubots` on Slack, or the default room otherwise
 - **sigep.js**: Sigma Phi Epsilon fraternity chapter lookup/stats
 - **yubikey.js**: Auto-invalidate accidentally pasted YubiKey OTPs
 
