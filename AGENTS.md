@@ -132,6 +132,7 @@ Critical variables (see `.env-dist` for complete list):
 - **nfd-incidents.js**: Nashville Fire Department active incidents via ArcGIS API
 - **pbs-kids.js**: PBS Kids episode listings
 - **startup.js**: Announce startup (host, branch, commit, versions) to `#hubots` on Slack, or the default room otherwise
+- **restart.js**: `bot restart` exits the process; systemd brings it back
 - **sigep.js**: Sigma Phi Epsilon fraternity chapter lookup/stats
 - **yubikey.js**: Auto-invalidate accidentally pasted YubiKey OTPs
 
