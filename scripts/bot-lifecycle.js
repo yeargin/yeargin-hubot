@@ -78,6 +78,14 @@ module.exports = (robot) => {
     }
   }
 
+  const announce = async (room, message) => {
+    try {
+      await robot.messageRoom(room, message)
+    } catch (err) {
+      robot.logger.info(`Skipping startup message: could not post to ${room} (${err.message})`)
+    }
+  }
+
   robot.on('scripts have loaded', async () => {
     const rows = [
       ['Host', os.hostname()],
@@ -89,12 +97,12 @@ module.exports = (robot) => {
 
     if (!isSlack) {
       const headline = `${robot.name} has started!`
-      robot.messageRoom(STARTUP_ROOM_DEFAULT, [headline, ...rows.map(([k, v]) => `${k}: ${v}`)].join(' | '))
+      await announce(STARTUP_ROOM_DEFAULT, [headline, ...rows.map(([k, v]) => `${k}: ${v}`)].join(' | '))
       return
     }
 
     const name = await displayName()
-    robot.messageRoom(STARTUP_ROOM_SLACK, {
+    await announce(STARTUP_ROOM_SLACK, {
       text: `${name} has started!`,
       blocks: [
         { type: 'section', text: { type: 'mrkdwn', text: `*${name}* has started!` } },
