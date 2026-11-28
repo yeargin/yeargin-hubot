@@ -85,4 +85,4 @@ Service-specific scripts may require additional API keys.
 
 ## Deployment
 
-Deployment can be triggered via custom Jenkins integration (see `scripts/deploy.js`).
+Deployment can be triggered via custom Jenkins integration (see `scripts/bot-lifecycle.js`).

@@ -38,7 +38,7 @@ npm test  # Validates environment config (hubot-dotenv --config-check)
 ```
 
 ### Deployment
-Custom Jenkins-based deployment via `scripts/deploy.js`:
+Custom Jenkins-based deployment via `scripts/bot-lifecycle.js`:
 ```
 !deploy          # Deploy main branch
 !deploy <branch> # Deploy specific branch
@@ -87,7 +87,7 @@ module.exports = (robot) => {
    slackWebClient.chat.postMessage({ /* payload */ });
    ```
 
-4. **Thread support**: Get thread ID from raw message (see `scripts/deploy.js`)
+4. **Thread support**: Get thread ID from raw message (see `scripts/bot-lifecycle.js`)
    ```javascript
    const threadId = msg.message.rawMessage.ts;
    msg.send({ attachments: [...], thread_ts: threadId });
@@ -128,11 +128,9 @@ Critical variables (see `.env-dist` for complete list):
 ## Custom Scripts Overview
 
 - **bot-logs.js**: Fetch recent bot log entries from journald (uploaded as a file on Slack)
-- **deploy.js**: Trigger Jenkins deployments via Slack
+- **bot-lifecycle.js**: Startup announcement (`#hubots` on Slack), `bot restart` (exits; systemd brings it back), and Jenkins `deploy` with result reporting
 - **nfd-incidents.js**: Nashville Fire Department active incidents via ArcGIS API
 - **pbs-kids.js**: PBS Kids episode listings
-- **startup.js**: Announce startup (host, branch, commit, versions) to `#hubots` on Slack, or the default room otherwise
-- **restart.js**: `bot restart` exits the process; systemd brings it back
 - **sigep.js**: Sigma Phi Epsilon fraternity chapter lookup/stats
 - **yubikey.js**: Auto-invalidate accidentally pasted YubiKey OTPs
 
